@@ -13,16 +13,4 @@
 
 
 
-Auth::routes();
-
-Route::get('/', 'HomeController@index')->name('home');
-
-Route::get('now', function () {
-    return date("Y-m-d H:i:s");
-});
-Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
-    Route::get('/', 'HomeController@index');
-});
-
-Route::get('/showinfo',['middleware'=>'auth','user'=>'InformationController@showinfo']);
-Route::post('/postinfo',['middleware'=>'auth','user'=>'InformationController@postinfo']);
+Route::get('/', 'PagesController@root')->name('root');
